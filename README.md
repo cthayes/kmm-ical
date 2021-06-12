@@ -8,6 +8,19 @@ iCalendar parser for Kotlin Multiplatform Mobile
 - Start
 - End
 
+## Usage
+
+### Swift
+```
+Calendar().loadData(url: url) { result, err in
+    if let result = result {
+        self.data = result
+    } else if let err = err {
+        print(err)
+    }
+}
+```
+
 ## Dates
 The start and end dates are in UTC. Sometimes dates were in my local timezone. For consistency, they are converted back to UTC. That timezone is assumed to be EST.
 
