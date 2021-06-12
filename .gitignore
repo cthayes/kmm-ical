@@ -1,4 +1,5 @@
 build
 .idea
 .gradle
-java_pid9408.hprof
+*.hprof
+.DS_Store
