@@ -1,11 +1,11 @@
 plugins {
     kotlin("multiplatform") version "1.5.0"
     id("com.android.library") version "4.2"
-    id("kotlin-android-extensions")
+    id("maven-publish")
 }
 
 group = "net.cthayes"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
     google()
@@ -13,8 +13,16 @@ repositories {
     mavenCentral()
 }
 
+tasks {
+    withType<JavaCompile> {
+        options.fork(mapOf(Pair("jvmArgs", listOf("--add-opens", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED"))))
+    }
+}
+
 kotlin {
-    android()
+    android {
+        publishAllLibraryVariants()
+    }
     iosX64("ios") {
         binaries {
             framework {
@@ -61,7 +69,7 @@ android {
     compileSdkVersion(29)
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(24)
+        minSdkVersion(22)
         targetSdkVersion(29)
     }
 }

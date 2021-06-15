@@ -8,9 +8,27 @@ iCalendar parser for Kotlin Multiplatform Mobile
 - Start
 - End
 
+## Dependencies
+- Java
+- Maven
+
+## Installation
+```
+git clone https://github.com/cthayes/kmm-ical.git
+cd kmm-ical
+./gradlew build
+```
+
 ## Usage
 
+### Android
+`./gradlew publishToMavenLocal`
+
+`implementation("net.cthayes:kmm-ical-android-debug:1.0.1")`
+
 ### Swift
+`build/bin/ios/releaseFramework/ical.framework`
+
 ```
 Calendar().loadData(url: url) { result, err in
     if let result = result {
